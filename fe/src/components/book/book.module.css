@@ -1,0 +1,14 @@
+.book {
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    background: white;
+    color: #444444;
+    padding: 1rem;
+  }
+  
+  
+.image {
+    width: 100%
+}
+  

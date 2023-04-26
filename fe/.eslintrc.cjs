@@ -3,8 +3,11 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
+  env: {
+    node: true
+  },
   extends: [
-    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
     'eslint:recommended',
     'plugin:prettier/recommended',
     '@vue/eslint-config-prettier/skip-formatting'
@@ -15,6 +18,7 @@ module.exports = {
   plugins: ['prettier'],
 
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'no-unused-vars': 'off'
   }
 }

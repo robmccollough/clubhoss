@@ -10,14 +10,26 @@ library.getBooks()
 
 <template>
   <main>
-    <div v-if="library.loading">Loading</div>
-    <div v-else>
+    <template v-if="library.loading">Loading</template>
+    <template v-else>
       <BookCard
         v-for="(book, index) in library.showcase"
         :key="index"
         :book="book"
       />
       <button @click="launchAddBookModal">Add</button>
-    </div>
+    </template>
   </main>
 </template>
+
+<style lang="sass" scoped>
+main
+  width: 100%
+  height: 100%
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  gap: 3rem
+  padding: 3rem
+</style>

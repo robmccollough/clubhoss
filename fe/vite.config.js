@@ -23,6 +23,7 @@ export default defineConfig({
     preprocessorOptions: {
       sass: {
         additionalData: `
+            @import "@/assets/_reset.sass"
             @import "@/assets/_variables.sass"
             @import "@/assets/_global.sass"
           `

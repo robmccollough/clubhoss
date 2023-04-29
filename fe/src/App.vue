@@ -10,7 +10,7 @@ import TopNav from '@/components/nav/TopNav.vue'
 
 <style lang="sass">
 #app
-  display: flex
-  width: 100vw
-  flex-direction: column
+    display: flex
+    width: 100vw
+    flex-direction: column
 </style>

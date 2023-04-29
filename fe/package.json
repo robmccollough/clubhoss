@@ -25,6 +25,7 @@
     "prettier": "^2.8.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
+    "unplugin-fonts": "^1.0.3",
     "vite": "^4.1.4"
   }
 }

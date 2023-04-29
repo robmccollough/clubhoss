@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 import api from '@/api'
 
-const baseUrl = `http://localhost:3000/api/books`
-
 export const useLibraryStore = defineStore('library', {
   state: () => ({
     books: [],

@@ -7,11 +7,12 @@
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db_uri": "node ./db/scripts/uri.js",
-    "db" : "npm run db_uri | exec"
+    "db": "npm run db_uri | exec"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

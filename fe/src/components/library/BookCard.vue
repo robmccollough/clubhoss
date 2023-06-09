@@ -1,5 +1,9 @@
 <script setup>
 import { toRefs, computed } from 'vue'
+import { useLibraryStore } from '../../stores/library'
+
+const library = useLibraryStore()
+
 const props = defineProps({
   book: {
     type: Object,
@@ -7,10 +11,12 @@ const props = defineProps({
   }
 })
 const { book } = toRefs(props)
+console.log(book.value)
+const authors = computed(() => book.value.authors.map((author) => author.name).join(','))
 
-const authors = computed(() =>
-  book.value.authors.map((author) => author.name).join(',')
-)
+function update() {
+  library.updateBook(book.value)
+}
 </script>
 <template>
   <div class="book">
@@ -26,7 +32,11 @@ const authors = computed(() =>
           {{ authors }}
         </p>
       </div>
-      <div class="desc">somethign something something</div>
+      <div class="desc">
+        <p>
+          {{ book.description }}
+        </p>
+      </div>
       <div class="cta">
         <FaIcon icon="fa-solid fa-arrow-up-right-from-square" size="lg" />
       </div>
@@ -56,6 +66,7 @@ const authors = computed(() =>
     font-size: 1.5rem
     line-height: 1.2
     font-weight: 800
+    @include line-clamp(1)
   .subtitle
     font-family: 'Roboto Condensed'
     color: $text-light
@@ -67,6 +78,8 @@ const authors = computed(() =>
     color: $text-light
     border-top: 2px solid $accent-lighter
     padding-top: 0.5rem
+    p
+      @include line-clamp(3)
   .image
     width: 100%
   .cta

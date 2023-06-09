@@ -21,6 +21,10 @@ const BookSchema = new Schema({
   },
   authors: [nameLink],
   narrators: [nameLink],
+  description: {
+    type: String,
+    default: ''
+  },
   purchased_at: {
     type: Date,
     required: false,

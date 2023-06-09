@@ -11,6 +11,7 @@ import TopNav from '@/components/nav/TopNav.vue'
 <style lang="sass">
 #app
     display: flex
-    width: 100vw
+    width: 100%
+    height: 100%
     flex-direction: column
 </style>

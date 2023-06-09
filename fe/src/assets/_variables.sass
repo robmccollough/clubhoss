@@ -10,4 +10,22 @@ $accent-lighter: #5d7893
 $text-light: lighten($background-dark, 40%)
 $accent-lightest: #5d7893
 
+
+$dark-grey: #2f2e2e
+
 // Breakpoints
+$max-screen-width: 1400px
+
+
+// Mixins
+
+@mixin roboto()
+    font-family: 'Roboto', 'sans-serif'
+@mixin roboto-condensed()
+    font-family: 'Roboto Condensed', 'monospace'
+@mixin line-clamp($num)
+    overflow: hidden
+    display: -webkit-box
+    line-clamp: $num
+    -webkit-line-clamp: $num
+    -webkit-box-orient: vertical

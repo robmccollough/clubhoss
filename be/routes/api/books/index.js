@@ -590,6 +590,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/:id", async (req, res) => {
+  try {
+    const id = req.params.id
+    console.log(id, req.body.name)
+    if (!id) res.status(400).json({message: 'Bad request'})
+    const book = await Book.findOneAndUpdate({_id: id}, req.body, {new:true});
+    if (!book) throw new Error("Book not found");
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

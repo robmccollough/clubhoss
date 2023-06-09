@@ -10,9 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Icons
 import {
   faHouse,
-  faArrowUpRightFromSquare
+  faArrowUpRightFromSquare,
+  faRectangleXmark
 } from '@fortawesome/free-solid-svg-icons'
-library.add(faHouse, faArrowUpRightFromSquare)
+library.add(faHouse, faArrowUpRightFromSquare, faRectangleXmark)
 
 const app = createApp(App)
 

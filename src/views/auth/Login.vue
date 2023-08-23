@@ -1,21 +1,21 @@
 <script setup>
-import { ref } from "vue";
-import { useAuthStore } from "@/stores/auth";
-import { useRouter } from "vue-router";
+import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
-const authStore = useAuthStore();
+const router = useRouter()
+const authStore = useAuthStore()
 
-const email = ref("");
-const password = ref("");
-const loading = ref(false);
+const email = ref('')
+const password = ref('')
+const loading = ref(false)
 
-async function submitForm() {
-  loading.value = true;
-  await authStore.login(email, password);
-  loading.value = false;
+async function login() {
+  loading.value = true
+  await authStore.login(email.value, password.value)
+  loading.value = false
   if (authStore.currentUser) {
-    router.push("/");
+    router.push('/')
   }
 }
 </script>
@@ -24,23 +24,17 @@ async function submitForm() {
   <main>
     <!-- logo -->
     <w-card>
-      <w-form @submit.prevent="submitForm">
-        <w-field>
-          <w-icon name="person"></w-icon>
-          <w-input v-model="email" label="Email" type="text" required></w-input>
-        </w-field>
-        <w-field>
-          <w-icon name="lock"></w-icon>
-          <w-input
-            v-model="password"
-            label="Password"
-            type="password"
-            required
-          ></w-input>
-        </w-field>
+      <w-input v-model="email" class="mt3" label="email" type="text"></w-input>
+      <w-input
+        v-model="password"
+        class="mt3"
+        label="password"
+        type="password"
+      ></w-input>
 
-        <w-button type="submit">Login</w-button>
-      </w-form>
+      <w-button class="my1" :loading="loading" @click.stop="login">
+        <b> sign in </b>
+      </w-button>
     </w-card>
   </main>
 </template>

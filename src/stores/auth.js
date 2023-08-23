@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', {
         throw new Error('Unable to register user')
       }
     },
-    async logIn(email, password) {
+    async login(email, password) {
       const { user } = await signInWithEmailAndPassword(
         getAuth(),
         email,
@@ -42,7 +42,7 @@ export const useAuthStore = defineStore('auth', {
         throw new Error('login failed')
       }
     },
-    async logOut() {
+    async logout() {
       await signOut(getAuth())
     }
   }

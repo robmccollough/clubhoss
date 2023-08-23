@@ -1,24 +1,24 @@
 <script setup>
-import { ref } from 'vue'
-import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/auth";
+import { useRouter } from "vue-router";
 
-const authStore = useAuthStore()
-const router = useRouter()
+const authStore = useAuthStore();
+const router = useRouter();
 
-const username = ref('')
-const email = ref('')
-const password = ref('')
-const loading = ref(false)
-const isPassword = ref(true)
+const username = ref("");
+const email = ref("");
+const password = ref("");
+const loading = ref(false);
+const isPassword = ref(true);
 
 async function submitForm() {
-  loading.value = true
-  await authStore.register(email.value, password.value, username.value)
-  loading.value = false
+  loading.value = true;
+  await authStore.register(email.value, password.value, username.value);
+  loading.value = false;
 
   if (authStore.currentUser) {
-    router.push('/')
+    router.push("/");
   }
 }
 </script>

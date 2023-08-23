@@ -33,7 +33,7 @@ onClickOutside(modal, close)
     position: fixed
     width: 100vw
     height: 100vh
-    background-color: opacify($dark-grey,0.2)
+    background-color: transparentize($background,0.2)
 
     place-items: center
     display: none
@@ -48,9 +48,10 @@ onClickOutside(modal, close)
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
     border-radius: 2rem
     position: relative
+    background-color: $background-dark
 .close-button
     position: absolute
-    inset: 1rem 1rem auto auto
+    inset: 1.5rem 1.5rem auto auto
     font-size: 1rem
     color: $dark-grey
 

@@ -14,9 +14,11 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@vueuse/core": "^10.1.2",
+    "firebase": "^10.1.0",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "wave-ui": "^3.4.7"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

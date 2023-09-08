@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-// import ShelfView from '@/views/ShelfView.vue'
-// import SessionsView from '@/views/SessionsView.vue'
+import Home from '@/views/Home.vue'
+import Club from '@/views/Club.vue'
 import Login from '@/views/auth/Login.vue'
 import Register from '@/views/auth/Register.vue'
 
@@ -16,33 +15,27 @@ const router = createRouter({
     },
     {
       path: '/login',
+      name: 'Login',
       component: Login
     },
     {
       path: '/register',
+      name: 'Register',
       component: Register
     },
     {
       path: '/home',
-      name: 'HomeView',
-      component: HomeView,
-      meta: {
-        requiresAuth: true
-      }
+      name: 'Home',
+      component: Home,
+      beforeEnter: authGaurd
+    },
+    {
+      path: '/club/:name',
+      name: 'Club',
+      component: Club,
+      beforeEnter: authGaurd
     }
-    // {
-    //   path: '/library',
-    //   name: 'ShelfView',
-    //   component: ShelfView
-    // },
-    // {
-    //   path: '/sessions',
-    //   name: 'SessionsView',
-    //   component: SessionsView
-    // }
   ]
 })
-
-router.beforeEach(authGaurd)
 
 export default router

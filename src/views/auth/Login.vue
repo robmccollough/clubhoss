@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const authStore = useAuthStore()
+const auth = useAuthStore()
 
 const email = ref('')
 const password = ref('')
@@ -12,9 +12,9 @@ const loading = ref(false)
 
 async function login() {
   loading.value = true
-  await authStore.login(email.value, password.value)
+  await auth.login(email.value, password.value)
   loading.value = false
-  if (authStore.currentUser) {
+  if (auth.isLoggedIn) {
     router.push('/')
   }
 }

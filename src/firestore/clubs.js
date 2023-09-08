@@ -5,6 +5,9 @@ const clubDB = collection(db, 'clubs')
 
 const clubQueryBuilder = (q) => {
   const args = []
+  if (q?.id) {
+    args.push(where('uid', '==', q.id))
+  }
   if (q?.name) {
     args.push(where('name', '==', q.name))
   }
@@ -27,7 +30,10 @@ const getClubs = async (query) => {
   try {
     const q = clubQueryBuilder(query)
     const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map((doc) => doc.data())
+    return querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
   } catch (e) {
     console.log(e)
     return []

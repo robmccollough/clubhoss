@@ -5,45 +5,34 @@ import {
   signInWithEmailAndPassword,
   signOut
 } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: null,
-    loggedIn: false
+    user: null
   }),
   getters: {
-    isLoggedIn: (state) => state.loggedIn,
-    currentUser: (state) => state.user
+    isLoggedIn: (state) => !!state.user
   },
   actions: {
     async register(email, password, name) {
-      const { user } = await createUserWithEmailAndPassword(
-        getAuth(),
-        email,
-        password
-      )
-      if (user) {
-        this.loggedIn = true
-        this.user = user
-      } else {
+      const auth = getAuth()
+      await createUserWithEmailAndPassword(auth, email, password).catch(() => {
         throw new Error('Unable to register user')
-      }
+      })
     },
     async login(email, password) {
-      const { user } = await signInWithEmailAndPassword(
-        getAuth(),
-        email,
-        password
-      )
-      if (user) {
-        this.user = user
-        this.loggedIn = true
-      } else {
+      const auth = getAuth()
+      signInWithEmailAndPassword(auth, email, password).catch(() => {
         throw new Error('login failed')
-      }
+      })
+    },
+    setUser(user) {
+      this.user = user
     },
     async logout() {
-      await signOut(getAuth())
+      const auth = getAuth()
+      await signOut(auth)
     }
   }
 })

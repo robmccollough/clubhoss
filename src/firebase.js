@@ -1,5 +1,13 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
+import { useAuthStore } from './stores/auth'
+import Router from '@/router'
+import {
+  getAuth,
+  browserSessionPersistence,
+  onAuthStateChanged,
+  setPersistence
+} from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCA6PMjhC4qGp6TcG31WXg7g3ecKk6pOP8',
@@ -11,8 +19,21 @@ const firebaseConfig = {
   measurementId: 'G-7B4SVYQ75Z'
 }
 
-// Initialize Firebase App
+// Initialize Firebase App and auth service
+
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-export { app, db }
+const initFirebaseAuth = async () => {
+  const { setUser } = useAuthStore()
+  const auth = getAuth()
+  await setPersistence(auth, browserSessionPersistence)
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user)
+      Router.push({ name: 'Home' })
+    }
+  })
+}
+
+export { app, db, initFirebaseAuth }
